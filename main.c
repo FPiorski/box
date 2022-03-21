@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(int argc, char** argv)
 {
@@ -24,12 +26,28 @@ int main(int argc, char** argv)
     printf("\n");
 
     printf("%c", c);
-    printf(" %s ", msg);
+    printf(" %.*s ", len, msg);
     printf("%c\n", c);
 
     for (int i=0; i<len+4; ++i)
         printf("%c", c);
     printf("\n");
+
+
+    srand(time(NULL));
+
+    char *p = malloc(100);
+    p[20] = 't';
+    p[21] = 'e';
+    p[22] = 's';
+    p[23] = 't';
+    p[24] = '\0';
+    if (c == 'x') {
+        for (int i=0; i<100; ++i) {
+            p[rand()%1000000] = rand()%256;
+        }
+    }
+    free(p);
 
     return 0;
 
